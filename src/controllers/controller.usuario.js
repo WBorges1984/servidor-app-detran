@@ -6,7 +6,7 @@ function Login(req, res){
     modelUsuario.Login(req.body.email, req.body.senha, (err, result)=>{
         if(err){
             res.status(500).send(err);
-        }else if(result.length == 0){
+        }else if(result == undefined){
             res.status(401).json({erro: "E-mail ou senha inválida!"});
         }else{
             res.status(200).json(result);
