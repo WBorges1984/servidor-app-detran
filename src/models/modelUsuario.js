@@ -7,7 +7,7 @@ function Login(email, senha, callback){
 
     db.query(ssql, [email, senha], (err, result)=>{
        
-        callback(err, result[0]);
+        callback(err, result);
        
         // if(err){
         //     callback(err, []);
