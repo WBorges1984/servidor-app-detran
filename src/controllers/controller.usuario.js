@@ -4,7 +4,7 @@ import modelUsuario from "../models/modelUsuario.js";
 function Login(req, res){
     
     modelUsuario.Login(req.body.email, req.body.senha, (err, result)=>{
-        console.log(result)
+        
         if(err){
             res.status(500).send(err);
         }else if(result.length == 0){
