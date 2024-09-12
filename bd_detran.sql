@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/09/2024 às 22:51
+-- Tempo de geração: 12/09/2024 às 21:58
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -123,7 +123,7 @@ CREATE TABLE `result` (
   `id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `dt_prova` date NOT NULL,
-  `tempo` datetime NOT NULL,
+  `tempo` int(11) NOT NULL,
   `acertos` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -132,12 +132,14 @@ CREATE TABLE `result` (
 --
 
 INSERT INTO `result` (`id`, `user`, `dt_prova`, `tempo`, `acertos`) VALUES
-(1, 0, '2024-09-09', '2024-09-10 14:00:11', 21),
-(2, 0, '2024-09-02', '2024-09-10 11:00:11', 18),
-(3, 0, '2024-09-04', '2024-09-10 06:02:00', 29),
-(4, 0, '2024-09-03', '2024-09-10 16:02:00', 12),
-(5, 0, '2024-09-06', '2024-09-10 04:02:00', 29),
-(6, 0, '2024-09-06', '2024-09-10 07:14:00', 24);
+(1, 1, '2024-09-09', 21, 21),
+(2, 1, '2024-09-02', 28, 18),
+(3, 1, '2024-09-04', 24, 29),
+(4, 1, '2024-09-03', 26, 12),
+(5, 1, '2024-09-06', 28, 29),
+(6, 1, '2024-09-06', 25, 24),
+(7, 1, '2024-09-11', 27, 29),
+(8, 1, '2024-09-08', 24, 27);
 
 -- --------------------------------------------------------
 
@@ -158,7 +160,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nome`, `email`, `senha`) VALUES
 (1, 'Willian', 'willian@willian.com', '123456'),
-(2, 'Elay', 'elay@elay.com', '654321');
+(2, 'Elay', 'elay@elay.com', '654321'),
+(3, 'Debora Alves', 'debby@debby.com', '123456');
 
 --
 -- Índices para tabelas despejadas
@@ -222,13 +225,13 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT de tabela `result`
 --
 ALTER TABLE `result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para tabelas despejadas
