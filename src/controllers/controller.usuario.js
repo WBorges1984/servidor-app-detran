@@ -16,7 +16,19 @@ function Login(req, res){
 }
 
 function Inserir(req, res){
-    res.status(200).json({id_usuario: 123});
+
+    const {nome, email, senha} = req.body;
+    modelUsuario.Inserir(nome, email, senha, (err, result)=>{
+
+        if(err){
+            res.status(500).send(err);
+        }else if(result.length == 0){
+            res.status(401).json({erro: "Erro ao cadastrar usuario"});
+        }else{
+            res.status(200).json(result[0]);
+        }
+
+    })
 }
 
 function ListarId(req, res){

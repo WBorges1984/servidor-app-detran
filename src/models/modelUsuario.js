@@ -17,8 +17,16 @@ function Login(email, senha, callback){
     });
 }
 
-function Inserir(req, res){
-   
+function Inserir(nome, email, senha, callback){
+    let ssql = "INSERT INTO `users`(`nome`, `email`, `senha`) ";
+    ssql += "VALUES (?,?,?) ";
+
+    db.query(ssql, [nome, email, senha], (err, result)=>{
+       
+        callback(err, result);
+    });
+
+     
 }
 
 function ListarId(req, res){
