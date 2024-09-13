@@ -5,5 +5,7 @@ const routeQuestao = Router();
 
 routeQuestao.get("/v1/questao/:id", controllerQuestao.Pesquisa);
 
+routeQuestao.get("/v1/questao", controllerQuestao.PesquisaAll);
+
 
 export default routeQuestao;

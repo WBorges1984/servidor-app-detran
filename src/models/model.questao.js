@@ -44,4 +44,15 @@ function Pesquisa(id, callback) {
     });
 }
 
-export default { Pesquisa };
+function PesquisaAll(callback){
+    let ssql = "SELECT * ";
+    ssql += "from questions ";
+    ssql += "where 1=1";
+
+    db.query(ssql,[],(err, result)=>{
+       
+        callback(err, result);
+    });
+}
+
+export default { Pesquisa, PesquisaAll };

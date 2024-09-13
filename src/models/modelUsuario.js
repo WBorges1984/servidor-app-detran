@@ -22,7 +22,7 @@ function Inserir(nome, email, senha, callback){
     ssql += "VALUES (?,?,?) ";
 
     db.query(ssql, [nome, email, senha], (err, result)=>{
-       
+        
         callback(err, result);
     });
 

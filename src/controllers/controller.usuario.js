@@ -19,13 +19,13 @@ function Inserir(req, res){
 
     const {nome, email, senha} = req.body;
     modelUsuario.Inserir(nome, email, senha, (err, result)=>{
-
+        console.log(result)
         if(err){
             res.status(500).send(err);
         }else if(result.length == 0){
             res.status(401).json({erro: "Erro ao cadastrar usuario"});
         }else{
-            res.status(200).json(result[0]);
+            res.status(201).json(result);
         }
 
     })
