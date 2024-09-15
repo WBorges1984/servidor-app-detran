@@ -9,11 +9,6 @@ function Resultado(callback){
        
         callback(err, result);
        
-        // if(err){
-        //     callback(err, []);
-        // }else{
-        //     callback(undefined, result);
-        // }
     });
 }
 export default{Resultado}
