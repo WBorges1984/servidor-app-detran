@@ -22,7 +22,7 @@ function Pesquisa(id, callback) {
 
         // Segunda consulta: obter as opções para a questão
         let opcoesQuery = `
-            SELECT id AS option_id, option_letter, option_text
+            SELECT id AS option_id, question_id, option_letter, option_text
             FROM options
             WHERE question_id = ?
         `;
