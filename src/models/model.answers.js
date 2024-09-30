@@ -1,7 +1,7 @@
 import {db} from '../config/database.js';
 
 function PesquisaAll(callback){
-    let ssql = "SELECT * FROM `answers` WHERE 1=1; ";
+    let ssql = "SELECT * FROM `answers` WHERE 1=1 ORDER BY pagina asc; ";
 
     db.query(ssql,(err, result)=>{
        
