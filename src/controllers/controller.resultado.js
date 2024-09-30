@@ -16,4 +16,19 @@ function Resultados(req, res){
     });
 }
 
-export default {Resultados}
+
+function ProvaNr(req, res){
+
+    modelResultado.ProvaNr((err, result)=>{
+        
+        if(err){
+            res.status(500).send(err);
+        }else if(result.length == 0){
+            res.status(401).json({erro: "Erro ao tentar localizar Número da ultima prova."});
+        }else{
+            res.status(200).json(result[0]);
+        }
+    });
+}
+
+export default {Resultados, ProvaNr}

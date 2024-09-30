@@ -15,11 +15,11 @@ function PesquisaAll(callback){
     });
 }
 
-function InserirResposta(idQuestion, userId, selectedOption, callback){
-    let ssql = "INSERT INTO `answers`(`question_id`, `user_id`, `selected_option`) ";
-    ssql += "VALUES (?,?,?) ";
+function InserirResposta(idQuestion, userId, selectedOption, pagina, callback){
+    let ssql = "INSERT INTO `answers`(`question_id`, `user_id`, `selected_option`, `pagina`) ";
+    ssql += "VALUES (?,?,?,?) ";
 
-    db.query(ssql, [idQuestion, userId, selectedOption], (err, result)=>{
+    db.query(ssql, [idQuestion, userId, selectedOption, pagina], (err, result)=>{
         
         callback(err, result);
     });

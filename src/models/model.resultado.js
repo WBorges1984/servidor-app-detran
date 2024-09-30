@@ -11,4 +11,16 @@ function Resultado(callback){
        
     });
 }
-export default{Resultado}
+
+function ProvaNr(callback){
+    let ssql = "SELECT MAX(prova_nr) as nr ";
+    ssql += "from result ";
+
+    db.query(ssql, [], (err, result)=>{
+       
+        callback(err, result);
+       
+    });
+}
+
+export default{Resultado, ProvaNr}

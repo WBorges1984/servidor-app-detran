@@ -13,10 +13,10 @@ function PesquisaAll(req, res) {
 }
 
 function InserirResposta(req, res) {
-    const { idQuestion, userId, selectedOption } = req.body;
+    const { idQuestion, userId, selectedOption, pagina } = req.body;
 
     // Lista de campos esperados
-    const camposEsperados = ['idQuestion', 'userId', 'selectedOption'];
+    const camposEsperados = ['idQuestion', 'userId', 'selectedOption', 'pagina'];
     const camposRecebidos = Object.keys(req.body);
 
     // Verificar se existem campos extras
@@ -26,11 +26,11 @@ function InserirResposta(req, res) {
     }
 
     // Verificar se faltam campos obrigatórios
-    if (!idQuestion || !userId || !selectedOption) {
-        return res.status(400).json({ erro: "Todos os campos (nome, email, senha) são obrigatórios" });
+    if (!idQuestion || !userId || !selectedOption || !pagina) {
+        return res.status(400).json({ erro: "Todos os campos são obrigatórios" });
     }
 
-    modelAnswers.InserirResposta(idQuestion, userId, selectedOption, (err, result) => {
+    modelAnswers.InserirResposta(idQuestion, userId, selectedOption, pagina, (err, result) => {
         if (err) {
             return res.status(500).send(err);
         }
