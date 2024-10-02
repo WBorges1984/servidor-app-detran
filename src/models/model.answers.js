@@ -60,4 +60,13 @@ function InserirResposta(idQuestion, userId, selectedOption, pagina, callback){
      
 }
 
-export default {PesquisaAll, InserirResposta}
+function ClearTable(callback){
+    let ssql = "TRUNCATE TABLE answers";
+
+    db.query(ssql, (err, result)=>{
+       
+        callback(err, result);
+    });
+}
+
+export default {PesquisaAll, InserirResposta, ClearTable}
