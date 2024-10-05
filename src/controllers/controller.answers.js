@@ -5,7 +5,7 @@ function PesquisaAll(req, res) {
         if (err) {
             return res.status(500).send(err);
         } else if (result.length === 0) {
-            return res.status(401).json({ erro: "Erro ao consulta respostas!" });
+            return res.status(200).json({ erro: "Tabela sem questões" });
         } else {
             return res.status(200).json(result);
         }
@@ -18,6 +18,18 @@ function ClearTable(req, res) {
             return res.status(500).send(err);
         } else if (result.length === 0) {
             return res.status(401).json({ erro: "Erro na deleção da tabela Answers" });
+        } else {
+            return res.status(200).json(result);
+        }
+    });
+}
+
+function qtdErrosAcertos(req, res) {
+    modelAnswers.qtdErrosAcertos((err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        } else if (result.length === 0) {
+            return res.status(401).json({ erro: "Não foi possivel consultar a tabela Answers" });
         } else {
             return res.status(200).json(result);
         }
@@ -57,4 +69,4 @@ function InserirResposta(req, res) {
 }
 
 
-export default { PesquisaAll, InserirResposta, ClearTable};
+export default { PesquisaAll, InserirResposta, ClearTable, qtdErrosAcertos};

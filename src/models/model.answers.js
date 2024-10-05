@@ -69,4 +69,21 @@ function ClearTable(callback){
     });
 }
 
-export default {PesquisaAll, InserirResposta, ClearTable}
+function qtdErrosAcertos(callback){
+    let ssql = "SELECT CASE ";
+    ssql += "WHEN a.selected_option = o_correct.id THEN 'Correta' "
+    ssql += "ELSE 'Incorreta' "
+    ssql += "END AS resultado, "
+    ssql += "COUNT(*) AS total "
+    ssql += "FROM ANSWERS a "
+    ssql += "JOIN OPTIONS o_correct ON a.question_id = o_correct.question_id "
+    ssql += "AND o_correct.option_letter = 'A' "
+    ssql += "GROUP BY resultado;"
+
+    db.query(ssql, (err, result)=>{
+       
+        callback(err, result);
+    });
+}
+
+export default {PesquisaAll, InserirResposta, ClearTable, qtdErrosAcertos}
