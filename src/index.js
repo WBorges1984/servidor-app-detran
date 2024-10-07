@@ -9,7 +9,7 @@ import routeAnswers from './routes/route.answers.js';
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin:['http://10.1.1.101:8082', 'http://localhost:8082']}));
+app.use(cors({origin:['http://10.1.1.101:8082', 'http://localhost:8082', 'http://localhost:3000']}));
 
 app.use(routeUsuario);
 app.use(routeQuestao);

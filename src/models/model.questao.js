@@ -8,7 +8,7 @@ function Pesquisa(id, callback) {
         WHERE id = ?
         
     `;
-
+    
     db.query(questaoQuery, [id], (err, questaoResult) => {
         if (err) {
             callback(err, null);
@@ -44,6 +44,18 @@ function Pesquisa(id, callback) {
     });
 }
 
+function PorDescricao(descricao, callback){
+    let ssql = "SELECT question_text ";
+    ssql += "from questions ";
+    ssql += "where question_text=?";
+
+    console.log(ssql)
+    db.query(ssql, [descricao], (err, result)=>{
+        
+        callback(err, result);
+    });
+}
+
 function PesquisaAll(callback){
     let ssql = "SELECT * ";
     ssql += "from questions ";
@@ -55,4 +67,4 @@ function PesquisaAll(callback){
     });
 }
 
-export default { Pesquisa, PesquisaAll };
+export default { Pesquisa, PesquisaAll, PorDescricao };
