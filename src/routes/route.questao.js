@@ -9,5 +9,6 @@ routeQuestao.get("/v1/questao/descricao/:descricao", controllerQuestao.PorDescri
 
 routeQuestao.get("/v1/questao", controllerQuestao.PesquisaAll);
 
+routeQuestao.post("/v1/questao", controllerQuestao.cadastrarPerguntaEDescricao);
 
 export default routeQuestao;

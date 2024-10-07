@@ -17,7 +17,6 @@ function Pesquisa(req, res){
 }
 
 function PorDescricao(req, res){
-    console.log('88888888888')
 
     modelQuestao.PorDescricao(req.params.descricao, (err, result)=>{
         if(err){
@@ -27,6 +26,26 @@ function PorDescricao(req, res){
         }else{
             res.status(200).json(result);
         }
+    });
+}
+
+function cadastrarPerguntaEDescricao(req, res){
+
+    const { questionText, imageUrl, correctOption, opcoes } = req.body;
+
+    // Verifica se todos os dados necessários foram passados
+    if (!questionText || !correctOption || !opcoes || !Array.isArray(opcoes)) {
+        return res.status(400).json({ error: "Dados incompletos. Verifique a descrição da pergunta, a opção correta e as opções de resposta." });
+    }
+
+    // Chama o modelo passando os dados da pergunta e opções
+    modelQuestao.cadastrarPerguntaEDescricao(questionText, imageUrl, correctOption, opcoes, (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: "Erro ao cadastrar a pergunta e opções", details: err });
+        }
+
+        // Resposta de sucesso
+        res.status(200).json({ message: "Pergunta e opções cadastradas com sucesso!", result });
     });
 }
 
@@ -45,4 +64,4 @@ modelQuestao.PesquisaAll((err, result)=>{
 });
 }
 
-export default {Pesquisa,PesquisaAll, PorDescricao}
+export default {Pesquisa,PesquisaAll, PorDescricao, cadastrarPerguntaEDescricao}

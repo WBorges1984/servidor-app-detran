@@ -49,7 +49,6 @@ function PorDescricao(descricao, callback){
     ssql += "from questions ";
     ssql += "where question_text=?";
 
-    console.log(ssql)
     db.query(ssql, [descricao], (err, result)=>{
         
         callback(err, result);
@@ -67,4 +66,58 @@ function PesquisaAll(callback){
     });
 }
 
-export default { Pesquisa, PesquisaAll, PorDescricao };
+function cadastrarPerguntaEDescricao(questionText, imageUrl, correctOption, opcoes, callback) {
+    db.getConnection((err, connection) => {
+        if (err) {
+            return callback(err, null);
+        }
+
+        // Iniciar transação
+        connection.beginTransaction((err) => {
+            if (err) {
+                connection.release();  // Liberar a conexão de volta ao pool
+                return callback(err, null);
+            }
+
+            // Inserir a pergunta
+            const queryQuestion = `INSERT INTO questions (question_text, image_url, correct_option) VALUES (?, ?, ?)`;
+            connection.query(queryQuestion, [questionText, imageUrl, correctOption], (err, result) => {
+                if (err) {
+                    return connection.rollback(() => {
+                        connection.release();
+                        callback(err, null);
+                    });
+                }
+
+                const questionId = result.insertId;
+
+                // Inserir as opções
+                const optionsData = opcoes.map((opcao) => [questionId, opcao.optionLetter, opcao.optionText]);
+                const queryOptions = `INSERT INTO options (question_id, option_letter, option_text) VALUES ?`;
+                connection.query(queryOptions, [optionsData], (err) => {
+                    if (err) {
+                        return connection.rollback(() => {
+                            connection.release();
+                            callback(err, null);
+                        });
+                    }
+
+                    // Finalizar transação
+                    connection.commit((err) => {
+                        if (err) {
+                            return connection.rollback(() => {
+                                connection.release();
+                                callback(err, null);
+                            });
+                        }
+                        connection.release();
+                        callback(null, { message: 'Pergunta e opções cadastradas com sucesso!' });
+                    });
+                });
+            });
+        });
+    });
+}
+
+
+export default { Pesquisa, PesquisaAll, PorDescricao, cadastrarPerguntaEDescricao };
