@@ -60,13 +60,17 @@ function InserirResposta(idQuestion, userId, selectedOption, pagina, callback){
      
 }
 
-function ClearTable(callback){
-    let ssql = "TRUNCATE TABLE answers";
+function FirstQuestion(callback){
+    let ssql = "SELECT * FROM answers "
+    ssql += "ORDER BY id ASC "
+    ssql += "LIMIT 1"
 
     db.query(ssql, (err, result)=>{
-       
+        
         callback(err, result);
     });
+
+     
 }
 
 function qtdErrosAcertos(callback){
@@ -86,4 +90,4 @@ function qtdErrosAcertos(callback){
     });
 }
 
-export default {PesquisaAll, InserirResposta, ClearTable, qtdErrosAcertos}
+export default {PesquisaAll, InserirResposta, qtdErrosAcertos, FirstQuestion}

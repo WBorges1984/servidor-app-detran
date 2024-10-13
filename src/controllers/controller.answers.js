@@ -12,17 +12,7 @@ function PesquisaAll(req, res) {
     });
 }
 
-function ClearTable(req, res) {
-    modelAnswers.ClearTable((err, result) => {
-        if (err) {
-            return res.status(500).send(err);
-        } else if (result.length === 0) {
-            return res.status(401).json({ erro: "Erro na deleção da tabela Answers" });
-        } else {
-            return res.status(200).json(result);
-        }
-    });
-}
+
 
 function qtdErrosAcertos(req, res) {
     modelAnswers.qtdErrosAcertos((err, result) => {
@@ -32,6 +22,18 @@ function qtdErrosAcertos(req, res) {
             return res.status(401).json({ erro: "Não foi possivel consultar a tabela Answers" });
         } else {
             return res.status(200).json(result);
+        }
+    });
+}
+
+function FirstQuestion(req, res) {
+    modelAnswers.FirstQuestion((err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        } else if (result.length === 0) {
+            return res.status(401).json({ erro: "Não foi possivel consultar a tabela Answers" });
+        } else {
+            return res.status(200).json(result[0]);
         }
     });
 }
@@ -69,4 +71,4 @@ function InserirResposta(req, res) {
 }
 
 
-export default { PesquisaAll, InserirResposta, ClearTable, qtdErrosAcertos};
+export default { PesquisaAll, InserirResposta, qtdErrosAcertos, FirstQuestion};

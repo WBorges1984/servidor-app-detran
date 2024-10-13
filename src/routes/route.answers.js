@@ -7,8 +7,8 @@ routeAnswers.get("/v1/answers", controllerAnswers.PesquisaAll);
 
 routeAnswers.post("/v1/answers/inserir", controllerAnswers.InserirResposta);
 
-routeAnswers.put("/v1/answers/clear", controllerAnswers.ClearTable);
-
 routeAnswers.get("/v1/answers/ErrosAcertos", controllerAnswers.qtdErrosAcertos);
+
+routeAnswers.get("/v1/answers/first", controllerAnswers.FirstQuestion);
 
 export default routeAnswers;

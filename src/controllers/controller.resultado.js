@@ -17,6 +17,23 @@ function Resultados(req, res){
 }
 
 
+function InsertResult(req, res) {
+    const { user, prova_nr, tempo, acertos } = req.body;
+
+    modelResultado.InsertResult(user, prova_nr, tempo, acertos, (err, result) => {
+        if (err) {
+            return res.status(500).send(err); // Retorna erro do servidor
+        } 
+        
+        if (result.affectedRows === 0) {
+            return res.status(400).json({ erro: "Falha ao inserir o resultado" }); // Não foi inserido nada
+        } 
+        
+        return res.status(201).json({ message: "Resultado inserido com sucesso", id: result.insertId }); // Retorna o insertId e sucesso
+    });
+}
+
+
 function ProvaNr(req, res){
 
     modelResultado.ProvaNr((err, result)=>{
@@ -31,4 +48,4 @@ function ProvaNr(req, res){
     });
 }
 
-export default {Resultados, ProvaNr}
+export default {Resultados, ProvaNr,InsertResult}
