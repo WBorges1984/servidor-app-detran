@@ -12,17 +12,14 @@ function clearTable(req, res) {
     const allowedTables = ['answers', 'users', 'products']; // Exemplo de tabelas permitidas
     if (!allowedTables.includes(tableName)) {
         return res.status(400).json({ error: "Tabela não permitida" });
-    }
-
-    console.log(`Truncando a tabela: ${tableName}`); // Log para verificar qual tabela está sendo truncada
+    } 
 
     // Chama o modelo passando o nome da tabela
     modelClearTable.clearTable(tableName, (err, result) => {
         if (err) {
             console.error('Erro ao truncar a tabela:', err); // Log de erro
             return res.status(500).json({ error: "Erro ao deletar a tabela", details: err });
-        }
-        console.log(`Tabela ${tableName} truncada com sucesso`); // Log de sucesso
+        } 
         return res.status(200).json({ message: `Tabela ${tableName} zerada com sucesso` });
     });
 }
