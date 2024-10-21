@@ -7,9 +7,10 @@ function Resultados(req, res){
     modelResultado.Resultado((err, result)=>{
         
         if(err){
+            
             res.status(500).send(err);
         }else if(result.length == 0){
-            res.status(204).json(0);
+            res.status(204).send(result);
         }else{
             res.status(200).json(result);
         }
@@ -47,7 +48,7 @@ function ProvaNr(req, res){
             if(nr == null){
                 res.status(200).send('0')    
             }else{
-                res.status(200).json(result);
+                res.status(200).json(result[0]);
             }
         }
     });
