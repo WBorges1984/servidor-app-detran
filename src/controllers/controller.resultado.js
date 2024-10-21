@@ -9,7 +9,7 @@ function Resultados(req, res){
         if(err){
             res.status(500).send(err);
         }else if(result.length == 0){
-            res.status(401).json({erro: "Não localizado nenhuma questão"});
+            res.status(204).json(0);
         }else{
             res.status(200).json(result);
         }
@@ -41,9 +41,14 @@ function ProvaNr(req, res){
         if(err){
             res.status(500).send(err);
         }else if(result.length == 0){
-            res.status(401).json({erro: "Erro ao tentar localizar Número da ultima prova."});
+            res.status(404).send({erro: "Erro ao tentar localizar Número da ultima prova."});
         }else{
-            res.status(200).json(result[0]);
+            const {nr} = result[0]
+            if(nr == null){
+                res.status(200).send('0')    
+            }else{
+                res.status(200).json(result);
+            }
         }
     });
 }
