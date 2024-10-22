@@ -6,6 +6,7 @@ import routeQuestao from './routes/route.questao.js';
 import routeResultado from './routes/route.resultado.js';
 import routeAnswers from './routes/route.answers.js';
 import routeClearTable from './routes/route.clearTable.js';
+import routeValidaEmail from './routes/route.validaEmail.js';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(routeQuestao);
 app.use(routeResultado);
 app.use(routeAnswers);
 app.use(routeClearTable);
+app.use(routeValidaEmail);
 
 app.listen(8082, ()=>{
     console.log("Servidor rodando na porta 8082")

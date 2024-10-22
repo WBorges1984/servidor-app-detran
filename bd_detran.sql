@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/10/2024 às 21:50
+-- Tempo de geração: 22/10/2024 às 05:25
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -222,7 +222,7 @@ INSERT INTO `questions` (`id`, `question_text`, `image_url`, `correct_option`) V
 (4, 'O extintor de incêndio é um equipamento:', NULL, 'A'),
 (5, 'A altura, a carga, a largura e o peso máximo que devem ser obedecidos pelo condutor do veículo constam na sinalização vertical de:', NULL, 'A'),
 (6, 'A placa à direita, indica aos usuários da via que há:', 'https://blog.sinalcenter.com.br/wp-content/uploads/2023/11/Placa-de-servico-auxiliar-transporte-sobre-agua-S-12-300x300.jpg', 'A'),
-(7, 'De acordo com a situação ao lado, é correto afirmar que:', 'QUESTAO_1161', 'A'),
+(7, 'De acordo com a situação ao lado, é correto afirmar que:', 'https://raw.githubusercontent.com/WBorges1984/imgAppDetran/refs/heads/main/QUESTAO_1161.gif', 'A'),
 (8, 'O condutor de veículo que estiver habilitado na categoria “E” NÃO poderá dirigir:', NULL, 'A'),
 (10, 'O Código de Trânsito Brasileiro prevê medidas para a melhoria das condições ambientais. Dentre elas, pode-se citar a:', NULL, 'A'),
 (11, 'Em acidente envolvendo motociclista, o procedimento adequado é:', NULL, 'A'),
@@ -235,11 +235,11 @@ INSERT INTO `questions` (`id`, `question_text`, `image_url`, `correct_option`) V
 (18, 'No homicídio culposo cometido na direção de veículo automotor, a pena é aumentada de um terço à metade, se o agente estiver conduzindo veículo:', NULL, 'A'),
 (19, 'O item do veículo responsável por filtrar os gases tóxicos gerados pelo motor é:', NULL, 'A'),
 (20, 'Em via urbana sinalizada e sem passeios, a circulação de pedestres deverá ocorrer:', NULL, 'A'),
-(21, 'Analise a animação ao lado e marque a alternativa que aponta as condutas dos motoristas dos veículos PRETO e VERMELHO que estão trafegando na via de trânsito rápido:', 'http://simulado-online.detran.rj.gov.br/img/placas/QUESTAO_994.GIF', 'A'),
+(21, 'Analise a animação ao lado e marque a alternativa que aponta as condutas dos motoristas dos veículos PRETO e VERMELHO que estão trafegando na via de trânsito rápido:', 'https://github.com/WBorges1984/imgAppDetran/blob/main/QUESTAO_994.gif?raw=true', 'A'),
 (22, 'É importante fazer a manutenção do sistema de escapamento do veículo, pois a danificação do mesmo, contribui para aumentar:', NULL, 'A'),
 (23, 'Quando houver necessidade de mover uma vítima de acidente de trânsito, com três pessoas para ajudar, qual o procedimento correto?', NULL, 'A'),
 (24, 'Márcia completou 18 anos de idade, o que ela mais deseja fazer neste momento é dar entrada no seu processo de habilitação. O Código de Trânsito Brasileiro dedica um capítulo para esta finalidade. Para Márcia agir corretamente, ela deverá:', NULL, 'A'),
-(25, 'A placa de advertência à direita, alerta aos usuários da via que há:', 'http://simulado-online.detran.rj.gov.br/img/placas/A10A.GIF', 'A'),
+(25, 'A placa de advertência à direita, alerta aos usuários da via que há:', 'https://blog.sinalcenter.com.br/wp-content/uploads/2023/11/Placa-entroncamento-obliquo-a-esquerda-A-10a-300x300.jpg', 'A'),
 (26, 'Dentre as principais falhas humanas causadoras de acidentes, podemos citar:', NULL, 'A'),
 (27, 'Dirigir sob o efeito de álcool ou substância psicoativa que determine dependência constitui uma infração:', NULL, 'A'),
 (28, 'Significa mudança de característica do veículo:', NULL, 'A'),
@@ -250,7 +250,7 @@ INSERT INTO `questions` (`id`, `question_text`, `image_url`, `correct_option`) V
 (33, 'O álcool produz muitos efeitos sobre o condutor. A ingestão de 6 a 8 dg de álcool, que é considerado crime de trânsito, está relacionada diretamente à produção de:', NULL, 'A'),
 (34, 'A área responsável por regulamentar, autuar, fiscalizar e aplicar as penalidades previstas no Códigode Trânsito Brasileiro é:', NULL, 'A'),
 (35, 'Em relação ao pedestre é correto afirmar que:', NULL, 'A'),
-(36, 'A placa de regulamentação à direita, informa aos usuários da via:', 'http://simulado-online.detran.rj.gov.br/img/placas/R6C.GIF', 'A'),
+(36, 'A placa de regulamentação à direita, informa aos usuários da via:', 'https://blog.sinalcenter.com.br/wp-content/uploads/2023/10/Placa-proibido-parar-e-estacionar-R-6c-300x300.jpg', 'A'),
 (37, 'Em caso de neblina, recomenda-se ao condutor acionar:', NULL, 'A');
 
 -- --------------------------------------------------------
@@ -267,20 +267,6 @@ CREATE TABLE `result` (
   `tempo` int(11) NOT NULL,
   `acertos` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `result`
---
-
-INSERT INTO `result` (`id`, `user`, `prova_nr`, `dt_prova`, `tempo`, `acertos`) VALUES
-(1, 1, 1, '2024-09-09', 21, 21),
-(2, 1, 2, '2024-09-02', 28, 18),
-(3, 1, 3, '2024-09-04', 24, 29),
-(4, 1, 4, '2024-09-03', 26, 12),
-(5, 1, 5, '2024-09-06', 28, 29),
-(6, 1, 6, '2024-09-06', 25, 24),
-(7, 1, 7, '2024-09-11', 27, 29),
-(8, 1, 8, '2024-09-08', 24, 27);
 
 -- --------------------------------------------------------
 
@@ -300,11 +286,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nome`, `email`, `senha`) VALUES
-(1, 'Willian Borges', 'willian@willian.com', '123456'),
-(2, 'Elay Borges', 'elay@elay.com', '654321'),
-(3, 'Debora Alves', 'debby@debby.com', '123456'),
-(4, '1', '1', '1'),
-(16, 'o', 'o', 'o');
+(17, 'willian', 'willian.borges@hotmail.com.br', '123'),
+(18, 'Willian borges', 'willian@empresafacil.com.br', '123');
 
 --
 -- Índices para tabelas despejadas
@@ -350,7 +333,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `options`
@@ -368,13 +351,13 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT de tabela `result`
 --
 ALTER TABLE `result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restrições para tabelas despejadas

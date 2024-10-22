@@ -44,12 +44,27 @@ function Inserir(req, res) {
     });
 }
 
+function GetEmailUser(req, res) {
+    modelUsuario.GetEmailUser(req.params.email, (err, exists) => {
+        if (err) {
+            console.error(err); // Log do erro para depuração
+            return res.status(500).send({ message: "Erro no servidor", error: err });
+        }
+
+        if (exists) {
+            return res.status(200).json({ message: "Email encontrado" });
+        } else {
+            return res.status(204).json({ message: "Email não encontrado" });
+        }
+    });
+}
+
 function ListarId(req, res) {
-    return res.status(200).json({ id_usuario: 123 });
+    return res.status(200).json({ id_usuario: "Lista ID: 123" });
 }
 
 function Editar(req, res) {
-    return res.status(200).json({ id_usuario: 123 });
+    return res.status(200).json({ id_usuario: "Editar: 123" });
 }
 
-export default { Login, Inserir, ListarId, Editar };
+export default { Login, Inserir, ListarId, Editar, GetEmailUser };

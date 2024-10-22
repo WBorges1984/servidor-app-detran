@@ -29,6 +29,24 @@ function Inserir(nome, email, senha, callback){
      
 }
 
+function GetEmailUser(email, callback) {
+    const ssql = "SELECT EMAIL FROM USERS WHERE EMAIL = ?";
+
+    db.query(ssql, [email], (err, result) => {
+        if (err) {
+            return callback(err, null); // Retorna o erro ao callback
+        }
+
+        if (result.length > 0) {
+            // Se houver resultado, o email existe
+            return callback(null, true);
+        } else {
+            // Se não houver resultado, o email não existe
+            return callback(null, false);
+        }
+    });
+}
+
 function ListarId(req, res){
     
 }
@@ -37,4 +55,4 @@ function Editar(req, res){
    
 }
 
-export default {Login, Inserir, ListarId, Editar}
+export default {Login, Inserir, ListarId, Editar, GetEmailUser}
